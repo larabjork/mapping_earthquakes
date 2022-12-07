@@ -1,9 +1,8 @@
 console.log("working");
 
 // Create the map object with a center and zoom level
-// let map = L.map("mapid").setView([40.7, -94.5], 4);
+let map = L.map("mapid").setView([40.7, -94.5], 4);
 
-let map = L.map("mapid").setView([34.0522, -118.243], 14);
 
 // Alternate code that would do same thing; useful when we need multiple tile layers or a background image for a map
 // let map = L.map("mapid",{
@@ -12,7 +11,10 @@ let map = L.map("mapid").setView([34.0522, -118.243], 14);
     // ],
     // zoom: 4
 // });
-// We create the tile layer that will be the background of our map.
+
+
+
+// // We create the tile layer that will be the background of our map. original version
 // let streets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token={accessToken}', {
 //     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 //     maxZoom: 18,
@@ -22,7 +24,7 @@ let map = L.map("mapid").setView([34.0522, -118.243], 14);
 //     accessToken: API_KEY
 // });
 
-// Skill drill: change map background to dark
+// skill drill version with dark mode for map
 let streets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -33,29 +35,42 @@ let streets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v10/tile
 });
 
 
+
 // Then we add our 'graymap' tile layer to the map.
 streets.addTo(map);
 
-// Add a marker to the map for Los Angeles
-// let marker = L.marker([34.0522, -118.2437]).addTo(map);
+// An array of cities
+let cityData = cities;
 
-// Use a circle as a marker, also for Los Angeles
-// L.circle([34.0522, -118.2437],
-//     {
-//         radius: 100
-//     }).addTo(map);
+//   loop throug the cities array and create one marker for each city - original version
+// cityData.forEach(function(city){
+//     console.log(city)
+//     L.circleMarker(city.location, {
+//         radius: city.population/100000
+//     })
+//     .bindPopup("<h2>" + city.city + ", " + city.state + "</h2> <hr> <h3>Population " + city.population.toLocaleString() + "</h3>")
+//     .addTo(map);
+// }
+// );
 
-// Skill drill (my version): light yellow circle, black outline, radius 300 - still LA
-// L.circle([34.0522, -118.2437],
-//         { color: 'black',
-//         fillColor: 'yellow',
-//         fillOpacity: 0.5,
-//         radius: 300
-//         }).addTo(map);
+//   loop throug the cities array and create one marker for each city - skill drill 
+cityData.forEach(function(city){
+    console.log(city)
+    L.circleMarker(city.location, {
+        radius: city.population/200000,
+        weight: 4,
+        color: "orange",
+        fillColor: "orange",
+        fillOpacity: 0.5,
 
-// SKill drill: module's code, using circleMarker - I didn't get the right results with a radius of 300 (compared to their code?)
-L.circle([34.0522, -118.2437],{ 
-    radius: 1300,
-    color: "black",
-    fillColor: "#ffffa1"
-}).addTo(map);
+    })
+    .bindPopup("<h2>" + city.city + ", " + city.state + "</h2> <hr> <h3>Population " + city.population.toLocaleString() + "</h3>")
+    .addTo(map);
+}
+);
+
+
+//     radius: 1300,
+//     color: "black",
+//     fillColor: "#ffffa1"
+// }).addTo(map);

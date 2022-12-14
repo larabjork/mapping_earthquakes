@@ -4,7 +4,9 @@ Data Bootcamp week 14 - GeoJSON, APIs, Leaflet
 # Overview of Project
 This exercise involved using JavaScript, D3, Mapbox, and Leaflet to create map layers from geoJSON data,showing earthquake locations/magnitudes and tectonic plate boundaries.
 
-The guided homework portion of the exercise involved building a map; adding single points, multiple points, lines, linestrings, and polygons; creating layers with different background maps; adding styling to data points (color/size variation depending on earthquake magnitude, as well as popups with text data); and accessing geoJSON data about earthquake activity in the past seven days from the US Geological Survey .
+The guided homework portion of the exercise involved building a map; adding single points, multiple points, lines, linestrings, and polygons; creating layers with different background maps; adding styling to data points (color/size variation depending on earthquake magnitude, as well as popups with text data); and accessing geoJSON data about earthquake activity in the past seven days from the US Geological Survey.
+
+This lesson also introduced git branching, and so the code is available on a specific branch (not the main).
 
 The independent challenge portion of the exercise involved loading tectonic plate data from another developer's GitHub repository and representing plate boundaries on the map of earthquake data. The challenge also required building a map layer that showed major earthquakes as a subset of the seven-day data. Finally, the challenge required adding a third map background option.
 
@@ -30,6 +32,7 @@ Background changed to "outdoors" and all other map layers selected
 
 Background changed to "streets" and only the two map layers created in this challenge selected (tectonic plates and major earthquakes)
 ![light world map with plate boundaries and fewer circles](https://github.com/larabjork/mapping_earthquakes/blob/earthquake_challenge/earthquake_challenge/static/images/streets_view_plates_and_major_eq.png)
+
 
 ## Ideas for Improvements
 Additions to this project could include:
